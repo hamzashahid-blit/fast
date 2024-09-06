@@ -1,6 +1,4 @@
-# Introduction
-You can basically do anything you want with the contents of this repo, read the LICENSE file.
-# Wow Hamza! are you an angel?
-Despite popular belief, no.
-# Why tho
-cz I want to (I hope FAST does'nt sue for this or smth)
+# Author
+Hi! My name is Hamza Shahid, and I am currently in FAST NUCES BCS-1D with roll# 24k-0869. I have been programming for almost 11 years (as of Mid 2024) with experience in a multitude of fields.
+# License
+This repository is licensed under the Unlicense license.
