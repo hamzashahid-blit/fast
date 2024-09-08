@@ -1,0 +1,125 @@
+#+Title: Programming Fundamentals Lab Manual 2
+#+Author: Hamza Shahid (24k-0869, BCS-1D)
+
+* Logistics Company
+** Problem
+You are working in a logistics company responsible for delivering packages. Design a flowchart to
+manage the process of receiving, sorting, and delivering packages. Include decision structures for
+handling fragile items and urgent deliveries.
+** Solution
+
+[[./logistics.svg]]
+* Vending Machine
+** Problem
+Imagine you are automating the process of a vending machine. Create a flowchart that includes
+decision points for user input, selecting products, accepting payment, and dispensing the correct
+item. Include error-handling for invalid inputs and insufficient funds.
+** Solution
+[[./vending.svg]]
+* Smallest Number
+** Problem
+Write pseudocode to find the smallest number among three given variables. Implement a
+decision-making structure to compare the variables.
+** Solution
+#+begin_src pseudocode
+  START
+
+  SET min = ∞
+  LOOP i = 1 TO 3 STEP = 1
+    INPUT num
+    IF min < num THEN
+      min = num
+    ENDIF
+  ENDLOOP
+  PRINT "Smallest number is ", min
+  
+  END
+#+end_src
+* Subtracting Without The Operator
+** Problem
+Create pseudocode to subtract two numbers without using the - operator. (Hint: Use addition and
+complement techniques.)
+** Solution
+#+begin_src pseudocode
+  START
+  
+  INPUT num1
+  INPUT num2
+  // the ~ operator is the two's complement
+  SET negatedNum2 = ~num2 + 1
+  SET difference = num1 + negatedNum2
+  PRINT num1, " minus ", num2, " is equal to ", difference
+  
+  END
+#+end_src
+* Basic Calculator
+** Problem
+Develop pseudocode for a basic calculator that performs multiplication and division. The pseudocode
+should prompt the user for two numbers and an operator, then display the result of the operation.
+** Solution
+#+begin_src pseudocode
+  START
+  
+  INPUT shouldMultiply
+  INPUT num1, num2
+  IF shouldMultiply THEN
+    SET result = num1 * num2
+    PRINT num1 " multiplied by ", num2, " is ", result
+  ELSE
+    IF num2 == 0
+      PRINT "Cannot divide by zero"
+    ELSE
+      SET result = num1 / num2
+      PRINT num1, " divided by ", num2, " is ", result
+    ENDIF
+  ENDIF
+  
+  END
+#+end_src
+* Is It Prime?
+** Problem
+Write an algorithm to determine whether a number is a prime number. The algorithm should iterate
+through possible divisors and determine if the number has any divisors other than 1 and itself.
+** Solution
+1. Read a number, called num, from the user.
+2. Create a counter variable named counter.
+3. Set counter to 2, since that is the first prime number (1 is not).
+4. Loop while counter is LESS than num.
+5. Inside the loop, check if the remainder of the division of num with counter is zero. We can use
+   the modulo operator for this (num % counter == 0). This checks if counter is a divisor of num.
+6. If a divisor is found, exit the loop and output that the number entered, num, is NOT a prime.
+7. Otherwise, inside the loop, increment the counter.
+8. If the loop finishes without finding a divisor, output that the number entered, num, IS a prime
+* Day of The Week
+** Problem
+Create an algorithm that asks the user for a day number (1-365) and outputs the corresponding day of
+the week, assuming that January 1st is a Monday.
+** Solution
+1. Read a number, called DayNumber, from the user.
+2. Check if DayNumber is between 1 and 365 INCLUSIVE.
+3. If not, output that DayNumber should be in the range 1 and 365 INCLUSIVE and exit the program.
+4. If DayNumber is valid, continue with the rest of the program.
+5. Create a variable called Result.
+6. Set Result to the remainder of the division of DayNumber with 7. Note that the modulo operator
+   could be used (DayNumber % 7). This works since we assume January 1st is a Monday.
+7. Check if Result is 0. If it is, output "Sunday" and exit.
+8. If not, Check if Result is 1. If it is, output "Monday" and exit.
+9. If not, Check if Result is 2. If it is, output "Tuesday" and exit.
+10. If not, Check if Result is 3. If it is, output "Wednesday" and exit.
+11. If not, Check if Result is 4. If it is, output "Thursday" and exit.
+12. If not, Check if Result is 5. If it is, output "Friday" and exit.
+13. If not, Result must be 6. Therefore, output "Saturday" and exit.
+* GCD Using Euclid's algorithm
+** Problem
+Develop an algorithm for a program that takes two numbers as input and finds the Greatest Common
+Divisor (GCD) of the two numbers using the Euclidean algorithm.
+** Solution
+1. Read two numbers from the user called A and B.
+2. If A is less than B, swap the values of A and B. Do this by adding B onto A, setting B to the
+   difference of A and B, and setting A to the difference of A and B.
+3. If B is equal to zero, output that the GCD is A and exit the program.
+4. Loop while the remainder of the division of A with B is not equal to zero. Note that you can use
+   the modulo (%) operator between A and B (a & b != 0).
+5. Inside the loop, swap A and B using the method described in step two.
+6. Then set B to the remainder of the division of A with B (b = b % a).
+7. After the loop ends, output that the GCD is B and exit the program.
