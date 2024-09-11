@@ -1,15 +1,227 @@
 #+Title: Programming Fundamentals Lab Manual 3
 #+Author: Hamza Shahid (24k-0869, BCS-1D)
+#+Options: tex:t
 
 * Branching & Pull Requesting
 After creating a branch and committing Problem.md, a file with a basic algorithm to check a number's
 parity, open a pull request.
+
 [[./pull-request-1.png]]
 [[./pull-request-2.png]]
 
 [[./pull-request-3.png]]
-Then merge the pull request.
-[[./pull-request-4.png]]
-Finally, delete the branch.
-[[./pull-request-5.png]]
 
+Then merge the pull request.
+
+[[./pull-request-4.png]]
+
+Finally, delete the branch.
+
+
+
+[[./pull-request-5.png]]
+* Q1: Overflow Woes
+** Problem
+Explain the output of this C program. Why the wrong value is being displayed in the output?
+[[file:problem-1.png]]
+** Solution
+Nowadays in most compilers in C, the size of an ~int~ is most often 4 bytes on 32-bit as well as
+64-bit systems.
+
+$4\ bytes = 4 \times 8\ bits = 32\ bits = 2^{32-1}\ - 1 = +2,147,483,647\ and\ -2,147,483,648$
+
+2 to the power of 32 (number of bits in 4 bytes) is the number of possibilities that 4 bytes can
+store. This is because, each bit can either be a one or a zero (2 options) and possibilities
+multiply with each other. However, there are also two subtractions in the equation. 32 - 1 in the
+power of two is used for the sign bit, which stores the sign of the number (negative or positive).
+This sign bit exists in an ~int~, while it does not in a ~uint~ (unsigned integer). The - 1 AFTER the
+power of two is used as one possibility for storing zero.
+
+In C, overflowing means that if a number is too big for the data type, it loops back to the minimum
+value. Underflowing is the same thing but if a number is too small, it loops back to the maximum
+value the data type can store.
+
+In this case, the value we are trying to store in a variable of type ~int~ (3,000,000,000) is larger
+than the maximum value that an ~int~ can store (+2,147,483,647). The result is an overflowing of our 3
+billion back to the minimum value of an ~int~ which is -2,147,483,648. The difference in the values of
+our value and the minimum value is added onto the minimum value to loop properly.
+
+$(3,000,000,000 - -2,147,483,648) + -2,147,483,648 = -1,294,967,296$
+
+This overflowed result (-1,294,967,296) can be seen in the picture.
+Here is an example in C that I made to show how it works. ~limits.h~ is for INT_MIN and INT_MAX
+#+begin_src C
+  #include<stdio.h>
+  #include<limits.h>
+
+  int main() {
+    long orig_num = 3000000000L;
+    int overflowed_num = 3000000000;
+    // Take the difference and add it to the min (which is -ve)
+    int overflow_calc = (orig_num - INT_MIN) + INT_MIN; // INT_MIN = -2,147,483,648 (on my machine :P)
+    
+    printf("INT_MAX is %d, while INT_MIN is %d\n", INT_MAX, INT_MIN);
+    printf("Overflowed num is: %d, Calculated overflow: %d\n\n", overflowed_num, overflow_calc);
+    printf("** IN HEXA ** (They are the same)\n");
+    printf("Original:   %x\nOverflowed: %x\n", orig_num, overflowed_num);
+    
+    return 0;
+  }
+
+#+end_src
+
+* Q2: Swapping
+** Problem
+Write a C program that takes two integer values as input from the user. Then swap the values taken
+from the user and display the output of the variables.
+** Solution
+#+begin_src C
+  #include <stdio.h>
+
+  int main()
+  {
+      //Input
+      printf("Enter the first number: ");
+      int a;
+      scanf("%d", &a);
+      printf("Enter the second number: ");
+      int b;
+      scanf("%d", &b);
+      // Swap
+      int tmp = a;
+      a = b;
+      b = tmp;
+      //Output
+      printf("The second number you entered was %d\n", a);
+      printf("The first number you entered was %d\n", b);
+      
+      return 0;
+  }
+#+end_src
+* Q3: Salary
+** Problem
+A customer asks the IT firm to develop a program in C language, which can take tax rate and salary
+from the user on runtime and then calculate the tax, the user has to pay and the salary he/she will
+have after paying the tax. This information is then provided to the user.
+** Solution
+#+begin_src C
+  #include <stdio.h>
+
+  int main()
+  {
+      printf("Enter the tax rate in percentage: ");
+      double taxRate;
+      scanf("%lf", &taxRate);
+      printf("Enter the salary: ");
+      double salary;
+      scanf("%lf", &salary);
+
+      double taxRequired = (double)taxRate/(double)100*salary;
+      printf("Tax you are required to pay is %lf\n", taxRequired);
+      printf("Salary received after paying tax is %lf\n", salary - taxRequired);
+
+      return 0;
+  }
+#+end_src
+* Q4: Fuel Consumption
+** Problem
+A car travelled back and forth from point A to point B. With a distance being (single trip)
+1207KM. During the forward trip fuel price was 118/liter while returning it was 123/liter.
+Calculate the total fuel cost (both ways) and the fuel consumed (total trip). Use the car’s fuel
+average as input from the user (Input must be positive make some restrictions on only accepting
+positive input)
+** Solution
+#+begin_src C
+  #include <stdio.h>
+
+  int main()
+  {
+    printf("Enter average fuel consumed in liters per kilometer: ");
+    double fuelAvg;
+    scanf("%lf", &fuelAvg);
+      
+    if(fuelAvg < 0){
+  	printf("Fuel average cannot be negative.");
+  	return -1;
+    }
+      
+    const double tripDistance = 1207; // KM
+    const double forwardFuelPrice = 118; // per liter
+    const double returnFuelPrice = 123; // per liter
+      
+    double totalCost = fuelAvg * tripDistance * (forwardFuelPrice + returnFuelPrice);
+    double totalFuel = fuelAvg * tripDistance * 2;
+      
+    printf("Total fuel cost for round trip: %.2lf\n", totalCost);
+    printf("Total fuel consumption: %.2lf\n", totalFuel);
+
+    return 0;
+  }
+#+end_src
+* Q5: Interest
+** Problem
+Construct a C program with the flowchart below. The input value of the principle must be between 100
+Rs. To 1,000,000 Rs. The Rate of interest must be between 5% to 10% and Time Period must be between
+1 to 10 years. Hint: these restrictions can be displayed in the form of message on the window.
+** Solution
+#+begin_src C
+  #include<stdio.h>
+
+  int main() {
+    printf("Enter the principal value (Between 100 and 1,000,000 inclusive): ");
+    double principal;
+    scanf("%lf", &principal);
+    if(principal < 100 || principal > 1000000) {
+  	printf("Invalid principal value!\n");
+  	return -1;
+    }
+    printf("Enter the annual interest rate in percentage (Between 5 and 10 inclusive): ");
+    double interestRate;
+    scanf("%lf", &interestRate);
+    if(interestRate < 5 || interestRate > 10) {
+  	printf("Invalid interest rate!\n");
+  	return -1;
+    }
+    printf("Enter the time period in years (Between 1 to 10 inclusive): ");
+    double years;
+    scanf("%lf", &years);
+    if(years < 1 || years > 10) {
+  	printf("Invalid time period!\n");
+  	return -1;
+    }
+
+    double finalAmount = principal * (1 + (interestRate/100) * years);
+    printf("According to \"A = P(1 + rt)\", your final amount is: %.2lf", finalAmount);
+
+    return 0;
+  }
+#+end_src
+* Q6: Gradient
+** Problem
+Construct a C program where you calculate the slope of two point (5,4), (3,2). Use format specifiers
+to cap the result to 3 decimal places.
+** Solution
+#+begin_src C
+  #include<stdio.h>
+
+  int main() {
+    printf("Welcome to the gradient calculator!\n");
+    printf("Enter x1: ");
+    float x1;
+    scanf("%f", &x1);
+    printf("Enter y1: ");
+    float y1;
+    scanf("%f", &y1);
+    printf("Enter x2: ");
+    float x2;
+    scanf("%f", &x2);
+    printf("Enter y2: ");
+    float y2;
+    scanf("%f", &y2);
+
+    float gradient = (y2 - y1) / (x2 - x1);
+    printf("The gradient between (%.3f, %.3f) and (%.3f, %.3f) is %.3f", x1, y1, x2, y2, gradient);
+
+    return 0;
+  }
+#+end_src
