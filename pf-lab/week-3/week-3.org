@@ -1,0 +1,15 @@
+#+Title: Programming Fundamentals Lab Manual 3
+#+Author: Hamza Shahid (24k-0869, BCS-1D)
+
+* Branching & Pull Requesting
+After creating a branch and committing Problem.md, a file with a basic algorithm to check a number's
+parity, open a pull request.
+[[./pull-request-1.png]]
+[[./pull-request-2.png]]
+
+[[./pull-request-3.png]]
+Then merge the pull request.
+[[./pull-request-4.png]]
+Finally, delete the branch.
+[[./pull-request-5.png]]
+
