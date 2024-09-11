@@ -28,7 +28,7 @@ Explain the output of this C program. Why the wrong value is being displayed in 
 Nowadays in most compilers in C, the size of an ~int~ is most often 4 bytes on 32-bit as well as
 64-bit systems.
 
-[[file:ltximg/org-ltximg_992f11c830854fe9657f9957e08668dd4b17acb0.png]]
+$$4\ bytes = 4 \times 8\ bits = 32\ bits = 2^{32-1}\ - 1 = +2,147,483,647\ and\ -2,147,483,648$$
 
 2 to the power of 32 (number of bits in 4 bytes) is the number of possibilities that 4 bytes can
 store. This is because, each bit can either be a one or a zero (2 options) and possibilities
@@ -46,7 +46,7 @@ than the maximum value that an ~int~ can store (+2,147,483,647). The result is a
 billion back to the minimum value of an ~int~ which is -2,147,483,648. The difference in the values of
 our value and the minimum value is added onto the minimum value to loop properly.
 
-[[file:ltximg/org-ltximg_9a57674ecc3b16ed80a5165d5e74ba11d3379452.png]]
+$$(3,000,000,000 - -2,147,483,648) + -2,147,483,648 = -1,294,967,296$$
 
 This overflowed result (-1,294,967,296) can be seen in the picture.
 Here is an example in C that I made to show how it works. ~limits.h~ is for INT_MIN and INT_MAX
