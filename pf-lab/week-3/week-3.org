@@ -28,7 +28,9 @@ Explain the output of this C program. Why the wrong value is being displayed in 
 Nowadays in most compilers in C, the size of an ~int~ is most often 4 bytes on 32-bit as well as
 64-bit systems.
 
-$$4\ bytes = 4 \times 8\ bits = 32\ bits = 2^{32-1}\ - 1 = +2,147,483,647\ and\ -2,147,483,648$$
+#+begin_src math
+4\ bytes = 4 \times 8\ bits = 32\ bits = 2^{32-1} - 1 = +2,147,483,647\ and\ -2,147,483,648
+#+end_src
 
 2 to the power of 32 (number of bits in 4 bytes) is the number of possibilities that 4 bytes can
 store. This is because, each bit can either be a one or a zero (2 options) and possibilities
