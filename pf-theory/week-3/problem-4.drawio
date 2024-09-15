@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0" version="24.7.14">
+  <diagram name="Page-1" id="jR3CGgP1g1BjzRoQCqm1">
+    <mxGraphModel dx="1763" dy="919" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-83" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-1" target="RLlSU3_BGVDVM2KfrkIX-72">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-1" value="Start" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Verdana;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="375" y="75" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-7" value="End" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Verdana;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="375" y="995" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-99" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-72" target="RLlSU3_BGVDVM2KfrkIX-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-72" value="Input Balance" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="355" y="185" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-107" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-73" target="RLlSU3_BGVDVM2KfrkIX-74">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-73" value="Input OnionPrice, ApricotPrice, GrapePrice, TomatoPrice" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="225" y="255" width="400" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-85" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-74" target="RLlSU3_BGVDVM2KfrkIX-75">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-74" value="Input OnionsBought, ApricotsBought, GrapesBought, TomatoesBought" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="185" y="325" width="480" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-102" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-75" target="RLlSU3_BGVDVM2KfrkIX-76">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-75" value="OnionCost = OnionsBought × OnionPrice" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="425" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-103" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-76" target="RLlSU3_BGVDVM2KfrkIX-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-76" value="ApricotCost = ApricotsBought × ApricotPrice" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="495" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-106" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-77" target="RLlSU3_BGVDVM2KfrkIX-79">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-77" value="GrapeCost = GrapesBought × GrapePrice" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="565" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-92" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-79" target="RLlSU3_BGVDVM2KfrkIX-80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-79" value="TomatoCost = TomatoesBought × TomatoPrice" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="635" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-95" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-80" target="RLlSU3_BGVDVM2KfrkIX-81">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-80" value="TotalCost = OnionCost + ApricotCost + GrapeCost + TomatoCost" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="215" y="705" width="420" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-96" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-81" target="RLlSU3_BGVDVM2KfrkIX-82">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-81" value="Change = Balance - TotalCost" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="775" width="230" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-97" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-82" target="RLlSU3_BGVDVM2KfrkIX-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-82" value="Print TotalCost, Change" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="325" y="885" width="200" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

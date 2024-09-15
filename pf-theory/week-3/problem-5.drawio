@@ -1,0 +1,148 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0" version="24.7.14">
+  <diagram name="Page-1" id="jR3CGgP1g1BjzRoQCqm1">
+    <mxGraphModel dx="1128" dy="588" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-188" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Verdana;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-1" target="RLlSU3_BGVDVM2KfrkIX-108">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-1" value="Start" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Verdana;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="150" y="140" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-189" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Verdana;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-108" target="RLlSU3_BGVDVM2KfrkIX-116">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-108" value="Input CropType, Moisture, LastRainedHours" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="35" y="250" width="330" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-211" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-116" target="RLlSU3_BGVDVM2KfrkIX-205">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-223" value="&lt;font style=&quot;font-size: 18px;&quot; face=&quot;Verdana&quot;&gt;No&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;fillColor=none;gradientColor=none;" vertex="1" connectable="0" parent="RLlSU3_BGVDVM2KfrkIX-211">
+          <mxGeometry x="-0.1903" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-116" value="&lt;div&gt;If Moisture &amp;gt; 100&lt;br&gt;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="110" y="340" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-215" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-202" target="RLlSU3_BGVDVM2KfrkIX-203">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-229" value="&lt;font style=&quot;font-size: 18px;&quot; face=&quot;Verdana&quot;&gt;No&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;fillColor=none;gradientColor=none;" vertex="1" connectable="0" parent="RLlSU3_BGVDVM2KfrkIX-215">
+          <mxGeometry x="-0.0386" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-219" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-202" target="RLlSU3_BGVDVM2KfrkIX-208">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-226" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;Yes&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Verdana;fontSize=18;fontColor=default;labelBackgroundColor=default;fillColor=none;gradientColor=none;" vertex="1" connectable="0" parent="RLlSU3_BGVDVM2KfrkIX-219">
+          <mxGeometry x="-0.7506" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-202" value="&lt;div&gt;If CropType == &quot;Wheat&quot; &lt;br&gt;&amp;amp;&amp;amp; Moisture &amp;lt; 30 &lt;br&gt;&amp;amp;&amp;amp; LastRainedHours &amp;gt; 24&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="40" y="630" width="320" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-216" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-203" target="RLlSU3_BGVDVM2KfrkIX-204">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-230" value="&lt;font style=&quot;font-size: 18px;&quot; face=&quot;Verdana&quot;&gt;No&lt;br&gt;&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;fillColor=none;gradientColor=none;" vertex="1" connectable="0" parent="RLlSU3_BGVDVM2KfrkIX-216">
+          <mxGeometry x="-0.149" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-220" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-203" target="RLlSU3_BGVDVM2KfrkIX-208">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-227" value="&lt;font style=&quot;font-size: 18px;&quot; face=&quot;Verdana&quot;&gt;Yes&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;fillColor=none;gradientColor=none;" vertex="1" connectable="0" parent="RLlSU3_BGVDVM2KfrkIX-220">
+          <mxGeometry x="0.167" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-203" value="If CropType == &quot;Corn&quot; &lt;br&gt;&lt;div&gt;&amp;amp;&amp;amp; Moisture &amp;lt; 40&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="80" y="790" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-217" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-204" target="RLlSU3_BGVDVM2KfrkIX-209">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-231" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;No&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Verdana;fontSize=18;fontColor=default;labelBackgroundColor=default;fillColor=none;gradientColor=none;" vertex="1" connectable="0" parent="RLlSU3_BGVDVM2KfrkIX-217">
+          <mxGeometry x="-0.19" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-221" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-204" target="RLlSU3_BGVDVM2KfrkIX-208">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-228" value="&lt;font style=&quot;font-size: 18px;&quot; face=&quot;Verdana&quot;&gt;Yes&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;fillColor=none;gradientColor=none;" vertex="1" connectable="0" parent="RLlSU3_BGVDVM2KfrkIX-221">
+          <mxGeometry x="-0.6626" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-204" value="&lt;div&gt;If CropType == &quot;Rice&quot; &lt;br&gt;&amp;amp;&amp;amp; Moisture &amp;lt; 25 &lt;br&gt;&amp;amp;&amp;amp; LastRainedHours &amp;lt;= 24&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="60" y="950" width="280" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-213" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-205" target="RLlSU3_BGVDVM2KfrkIX-207">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-224" value="&lt;font style=&quot;font-size: 18px;&quot; face=&quot;Verdana&quot;&gt;Yes&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;fillColor=none;gradientColor=none;" vertex="1" connectable="0" parent="RLlSU3_BGVDVM2KfrkIX-213">
+          <mxGeometry x="-0.7607" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-214" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-205" target="RLlSU3_BGVDVM2KfrkIX-202">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-225" value="&lt;font style=&quot;font-size: 18px;&quot; face=&quot;Verdana&quot;&gt;No&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;fillColor=none;gradientColor=none;" vertex="1" connectable="0" parent="RLlSU3_BGVDVM2KfrkIX-214">
+          <mxGeometry x="-0.0724" y="1" relative="1" as="geometry">
+            <mxPoint y="-2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-205" value="&lt;div&gt;If CropType != &quot;Wheat&quot; &lt;br&gt;&amp;amp;&amp;amp; CropType != &quot;Corn&quot; &lt;br&gt;&amp;amp;&amp;amp; CropType != &quot;Rice&quot;&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="60" y="460" width="280" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-233" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-207">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="670" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-207" value="Print &quot;Invalid input&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="400" y="413.9999999999998" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-232" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-208" target="RLlSU3_BGVDVM2KfrkIX-210">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="610" y="1120" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="670" y="845" />
+              <mxPoint x="670" y="1165" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-208" value="Print &quot;Initiate Irrigation&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="449" y="819.9999999999998" width="200" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-218" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-209" target="RLlSU3_BGVDVM2KfrkIX-210">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-209" value="Print &quot;DO NOT Initiate Irrigation&quot;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Verdana;" vertex="1" parent="1">
+          <mxGeometry x="61" y="1140" width="278" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-210" value="End" style="ellipse;whiteSpace=wrap;html=1;fontFamily=Verdana;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="499" y="1135" width="100" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-212" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;resizable=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="RLlSU3_BGVDVM2KfrkIX-116" target="RLlSU3_BGVDVM2KfrkIX-207">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RLlSU3_BGVDVM2KfrkIX-222" value="&lt;font style=&quot;font-size: 18px;&quot; face=&quot;Verdana&quot;&gt;Yes&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=Helvetica;fontSize=11;fontColor=default;labelBackgroundColor=default;fillColor=none;gradientColor=none;" vertex="1" connectable="0" parent="RLlSU3_BGVDVM2KfrkIX-212">
+          <mxGeometry x="-0.728" y="-1" relative="1" as="geometry">
+            <mxPoint x="41" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

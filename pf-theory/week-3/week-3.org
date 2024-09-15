@@ -1,0 +1,225 @@
+#+Title: Programming Fundamentals Theory: Assignment 1, Week 3
+#+Author: Hamza Shahid
+
+* Problem 1: Miles per Hour to Kilometers per Seconds
+** Problem
+This year olympics were held in Europe causing all sorts of problems for the Americans as they don’t
+use the standard measures like meters and kilometers, grams and kilograms. For racing events the
+speeds are measured in kilometers per seconds. Can you design a solution to convert kilometers per
+seconds to miles per hour for US viewers of the Paris Olympics?
+** IPO
+|------------------------------+-------------------------------------+-------------------------|
+| Input                        | Processing                          | Output                  |
+|------------------------------+-------------------------------------+-------------------------|
+| Speed in kilometers per hour | Input speed                         | Speed in miles per hour |
+|                              | Result = speed * 60 * 60 / 1.609344 |                         |
+|                              | Print Result                        |                         |
+|------------------------------+-------------------------------------+-------------------------|
+** Pseudocode
+#+begin_src fundamental
+  START
+
+  READ Speed
+  SET Result = Speed * 60 * 60 / 1.609344
+  PRINT Speed, " km/s = ", Result, " mi/h"
+
+  END
+#+end_src
+** Flowchart
+[[file:problem-1.svg]]
+
+* Problem 2: Even or Odds
+** Problem
+Mr. Bhola does not know what an even or odd number is. He is least bothered to learn the difference
+either. It all comes down to your programming skills to design a program that will ask for a
+positive number greater than 0 and prints whether the number is even or odd. Be careful, Mr. Bhola
+can even enter 0 or negative numbers so your solution must give an error saying invalid input in
+that case.
+** IPO
+|--------+-------------------------------------------+--------------------------|
+| Input  | Processing                                | Output                   |
+|--------+-------------------------------------------+--------------------------|
+| Number | Input Num                                 | If Number is even or odd |
+|        | If Num <= 0                               |                          |
+|        | Print "Invalid input"                     |                          |
+|        | Otherwise, continue...                    |                          |
+|        | If remainder of dividing Num by 2 is zero |                          |
+|        | Print "Even"                              |                          |
+|        | Otherwise                                 |                          |
+|        | Print "Odd"                               |                          |
+|--------+-------------------------------------------+--------------------------|
+** Pseudocode
+#+begin_src fundamental
+  START
+
+  READ Num
+  IF Num <= 0 THEN
+      PRINT "Invalid input"
+  ELSE
+      IF Num % 2 == 0 THEN
+  	    PRINT "Even"
+  	ELSE
+  	    PRINT "Odd"
+  	ENDIF
+  ENDIF
+
+  END
+#+end_src
+** Flowchart
+[[file:problem-2.svg]]
+
+* Problem 3: Legal Age of Marriage in Pakistan
+** Problem
+Child marriages are a major problem in Pakistan. To avoid responsibility the Federal Government
+delegated the task of Child Marriage Laws to provinces. Only Punjab and Sindh have updated the laws
+while in Punjab the law is going under another amendment this year. To make things simple in Sindh,
+No child, girl or boy, below the age of 18 can marry. Whereas in Punjab (until the new bill is
+passed) and other provinces ACT of 1929 is followed which prohibits girls below the age of 16 to
+marry whereas for boys the age is 18.  You are required to design a solution for both provinces to
+make this decision easy by asking relevant information from the user and giving output whether it is
+legal to marry to or not.
+** IPO
+|-------------+----------------------------------------+-------------------------------------------------------|
+| Input       | Processing                             | Output                                                |
+|-------------+----------------------------------------+-------------------------------------------------------|
+| Province    | Input Province, BoyAge, GirlAge        | If the boy and girl can marry in the province legally |
+| Age of Boy  | If province is Sindh                   |                                                       |
+| Age of Girl | Then If BoyAge >= 18 and GirlAge >= 18 |                                                       |
+|             | Print "Legal"                          |                                                       |
+|             | Otherwise Print "Illegal"              |                                                       |
+|             | If province is not Sindh               |                                                       |
+|             | Then If BoyAge >= 18 and GirlAge >= 16 |                                                       |
+|             | Print "Legal"                          |                                                       |
+|             | Otherwise Print "Illegal"              |                                                       |
+|-------------+----------------------------------------+-------------------------------------------------------|
+** Pseudocode
+#+begin_src fundamental
+  START
+
+  READ Province, BoyAge, GirlAge
+  IF Province == "Sindh" THEN
+      IF BoyAge >= 18 && GirlAge >= 18 THEN
+  	    PRINT "Legal"
+  	ELSE
+  	    PRINT "Illegal"
+  	ENDIF
+  ELSE
+      IF BoyAge >= 18 && GirlAge >= 16 THEN
+  	    PRINT "Legal"
+  	ELSE
+  	    PRINT "Illegal"
+  	ENDIF
+  ENDIF
+
+  END
+#+end_src
+** Flowchart
+[[file:problem-3.svg]]
+* Problem 4: Grocery Assistance/Calculator
+** Problem
+Imagine Mr. Bhoola is going to the market to buy some yummy fruits and vegetables. He's a little bit
+forgetful, so he doesn't always have a list or a fixed amount of money to spend. We're going to help
+Mr. Bhoola figure out how much he needs to pay and how much change he gets back. Here's what we need
+to know:
++ How much money Mr. Bhoola has today to buy fruits and vegetables.
++ The prices of the onions, apricots, grapes, and tomatoes at the market.
++ What vegetables Mr. Bhoola buys and how many of each.
+Here is an example of some random day in life of Mr. Bhoola
+1. What fruits and vegetables does Mr. Bhoola buy today? (For example, 2kg onions, 1 kg of grapes,
+   and 3kg tomatoes)
+2. What are the prices of each vegetable today? (For example, onions cost $1 per kg, grapes cost $2
+   per kg, and tomatoes cost $0.50 per kg)
+3. How much money does Mr. Bhoola have with him ? (For example, $10)
+Design a solution to help Mr. Bhoola every time he goes shopping!
+** IPO
+|-------------------+-------------------------------------------------------------------+------------|
+| Input             | Processing                                                        | Output     |
+|-------------------+-------------------------------------------------------------------+------------|
+| Initial Balance   | Input Balance                                                     | Total Cost |
+| Prices of Items   | Input OnionPrice, ApricotPrice, GrapePrice, TomatoPrice           | Change     |
+| Quantity of Items | Input OnionsBought, ApricotsBought, GrapesBought, TomatoesBought  |            |
+|                   | Set OnionCost   To OnionsBought   × OnionPrice                    |            |
+|                   | Set ApricotCost To ApricotsBought × ApricotPrice                  |            |
+|                   | Set GrapeCost   To GrapesBought   × GrapePrice                    |            |
+|                   | Set TomatoCost  To TomatoesBought × TomatoPrice                   |            |
+|                   | Set TotalCost To OnionCost + ApricotCost + GrapeCost + TomatoCost |            |
+|                   | Set Change To Balance - TotalCost                                 |            |
+|                   | Display TotalCost, Change                                         |            |
+|-------------------+-------------------------------------------------------------------+------------|
+** Pseudocode
+#+begin_src fundamental
+  START
+
+  INPUT Balance
+  INPUT OnionPrice, ApricotPrice, GrapePrice, TomatoPrice
+  INPUT OnionsBought, ApricotsBought, GrapesBought, TomatoesBought
+
+  SET OnionCost   = OnionsBought   × OnionPrice
+  SET ApricotCost = ApricotsBought × ApricotPrice
+  SET GrapeCost   = GrapesBought   × GrapePrice
+  SET TomatoCost  = TomatoesBought × TomatoPrice
+  SET TotalCost = OnionCost + ApricotCost + GrapeCost + TomatoCost
+  SET Change = Balance - TotalCost
+  PRINT "Total cost: ", TotalCost
+  PRINT "Change: ", Change
+
+  END
+#+end_src
+** Flowchart
+[[file:problem-4.svg]]
+* Problem 5: Crop Management
+** Problem
+A smart agricultural drone monitors a large farm to manage irrigation efficiently. The drone first
+checks the type of crop being monitored whether it's wheat, corn, or rice. For wheat, if the soil
+moisture is below 30%, and if it has not rained in the last 24 hours, the system will initiate
+irrigation. For corn, if the soil moisture is below 40%, the system will irrigate regardless of
+recent rainfall. For rice, if the soil moisture is below 25%, the system will irrigate unless it has
+rained in the last 24 hours. If the soil moisture is above these thresholds, no irrigation is
+applied. Design a solution to determine if irrigation should be initiated based on the crop type,
+soil moisture level, and rainfall status.
+** IPO
+|-----------------------------------+-----------------------------------------------------------------+----------------------------|
+| Input                             | Processing                                                      | Output                     |
+|-----------------------------------+-----------------------------------------------------------------+----------------------------|
+| Type of crop                      | Input CropType                                                  | If irrigation should start |
+| Percentage of moisture            | Input Moisture                                                  |                            |
+| How many hours ago it last rained | Input LastRainedHours                                           |                            |
+|                                   | If CropType is not Wheat nor Corn nor Rice or Moisture > 100    |                            |
+|                                   | Print "Invalid Input"                                           |                            |
+|                                   | Otherwise Continue...                                           |                            |
+|                                   | If CropType is Wheat and Moisture < 30 and LastRainedHours > 24 |                            |
+|                                   | OR CropType is Corn and Moisture < 40                           |                            |
+|                                   | OR CropType is Rice and Moisture < 25 and LastRainedHours <= 24 |                            |
+|                                   | Print "Irrigation should initiate"                              |                            |
+|                                   | Otherwise Print "Irrigation should NOT initiate"                |                            |
+|-----------------------------------+-----------------------------------------------------------------+----------------------------|
+** Pseudocode
+#+begin_src fundamental
+  START
+
+  INPUT CropType, Moisture, LastRainedHours
+  IF (CropType != "Wheat" && CropType != "Corn" && CropType != "Rice")
+     || (Moisture > 100) THEN
+      PRINT "Invalid input"
+  ELSE
+      IF (CropType == "Wheat" && Moisture < 30 && LastRainedHours > 24)
+         || (CropType == "Corn" && Moisture < 40)
+         || (CropType == "Rice" && Moisture < 25 && LastRainedHours <= 24) THEN
+          PRINT "Irrigation should initiate"
+      ELSE
+          PRINT "Irrigation should NOT initiate"
+  	ENDIF
+  ENDIF
+
+  END
+#+end_src
+** Flowchart
+[[file:problem-5.svg]]
+* Problem 6: Amusement Park Ride Eligibility
+* Problem 7: Which Floor...
+* Problem 8: Digit Sum
+* Problem 9: Exact Age in Days, Months, and Years from DOB
+* Problem 10: Poor Mr. Bhoola Bought a Faulty Keyboard
+* Problem 11: No Not Optimus Prime it's Coprime...
+* Problem 12: Die Hard 3: Defuse the Bomb... Quick!
+* Problem 13: The General N-M Size Die Hard Jug Problem
