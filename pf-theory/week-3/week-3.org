@@ -323,6 +323,8 @@ branching to do it.
 |---------------------------------+--------------------------------------------------------------------+---------------------------------------|
 ** Pseudocode
 #+begin_src fundamental
+  START
+
   READ input
   IF input < 0 || input > 1111111 THEN
       PRINT "Input must be a seven digit positive binary number!"
@@ -375,6 +377,8 @@ branching to do it.
   ELSE
       PRINT "Your floor is ", floor
   ENDIF
+
+  END
 #+end_src
 ** Flowchart
 [[file:problem-7.svg]]
@@ -447,16 +451,78 @@ branching to do it.
 
 * Problem 8: Digit Sum
 ** Problem
+You are required to design a solution that takes as input a single number and prints out the sum of
+its digits.
 ** IPO
-|-------+------------+--------|
-| Input | Processing | Output |
-|-------+------------+--------|
-|       |            |        |
-|-------+------------+--------|
+|----------+-----------------------------------------------------------+-----------------------|
+| Input    | Processing                                                | Output                |
+|----------+-----------------------------------------------------------+-----------------------|
+| A Number | Read input                                                | The sum of its digits |
+|          | set sum to zero and processed to input                    |                       |
+|          | loop while processed is greater than zero                 |                       |
+|          | set sum to sum plus remainder of dividing processed by 10 |                       |
+|          | set processed to processed divided by 10                  |                       |
+|          | print sum                                                 |                       |
+|----------+-----------------------------------------------------------+-----------------------|
 ** Pseudocode
+#+begin_src fundamental
+  START
+
+  READ input
+  SET sum = 0, processed = input
+  WHILE processed > 0 DO
+      sum = sum + processed % 10
+  	processed = processed / 10
+  ENDLOOP
+
+  PRINT "Sum of digits: ", sum
+
+  END
+#+end_src
+
 ** Flowchart
+[[file:problem-8.svg]]
+** C Code
+#+begin_src C
+  #include <stdio.h>
+
+  int main()
+  {
+    printf("Please enter a number: ");
+    int input;
+    scanf("%d", &input);
+
+    int sum = 0, processed = input;
+    while (processed > 0) {
+  	printf("p: %d, %d, %d\n", processed, processed / 10, processed % 10);
+  	sum += processed % 10;
+  	processed /= 10;
+    }
+    
+    printf("Sum of digits: %d\n", sum);
+    
+    return 0;
+  }
+#+end_src
+
 * Problem 9: Exact Age in Days, Months, and Years from DOB
 ** Problem
+*** Note
+For this problem you may ignore the leap years when calculating age but not when validating date of
+birth or current date.
+*** Main
+Mr. Bhoola is trying to figure out how old someone is, but he keeps getting confused! He needs your
+help. Your job is to create a solution that makes calculating ages super easy. Here's what you need
+to do:
+*** Get The Dates
+First, you need to ask Mr. Bhoola for two dates: The person's Birthday: This is the date they were
+born. And Today's Date: You'll need to know what day it is right now.
+*** Check for Mistakes (Validation Step)
+Before you can calculate the age, you need to make sure the dates Mr. Bhoola gives you are
+correct. Think about these things: Are there too many days in the month? For example, April only has
+30 days, so you can't have a date like April 31st. Is it a leap year? February has 29 days on a leap
+year, and 28 days otherwise!  Now, you can calculate the exact age. Bonus for also including leap
+year in the calculation.
 ** IPO
 |-------+------------+--------|
 | Input | Processing | Output |
