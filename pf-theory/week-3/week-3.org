@@ -216,6 +216,52 @@ soil moisture level, and rainfall status.
 ** Flowchart
 [[file:problem-5.svg]]
 * Problem 6: Amusement Park Ride Eligibility
+** Problem
+Safari park is a famous amusement park situated in Karachi that has specific height and age
+requirements for its rides. For The Dragon Roller Coaster, visitors must be at least 48 inches tall
+and 10 years old. The Sky Swing requires visitors to be at least 54 inches tall, with no age
+restriction. The Carousel has no height requirement but visitors must be at least 5 years old. A
+visitor is wearing a band so he may take as many rides as he wants until he is tired. Design a
+solution that determines if a visitor meets the criteria to go on a chosen ride based on their
+height, age, and selected ride.
+** IPO
+|------------------+-------------------------------------------------------------------+--------------------------------|
+| Input            | Processing                                                        | Output                         |
+|------------------+-------------------------------------------------------------------+--------------------------------|
+| Age              | Read Age, Height, Ride                                            | If visitor can sit in the ride |
+| Height in inches | If (Ride is not Dragon Roller Coaster nor Sky Swing Nor Carousel) |                                |
+| Ride name        | Or Age is negative Or Height is negative                          |                                |
+|                  | Then Print "Invalid Input"                                        |                                |
+|                  | Exit                                                              |                                |
+|                  | Otherwise, continue...                                            |                                |
+|                  | If Ride is Dragon Roller Coaster and Height >= 48 and Age >= 10   |                                |
+|                  | Or Ride is Sky Swing and Height >= 48                             |                                |
+|                  | Or Ride is Carousel and Age >= 5                                  |                                |
+|                  | Then Print "You meet the criteria for The ", Ride                 |                                |
+|                  | Otherwise Print "You DO NOT meet the criteria for The", Ride      |                                |
+|------------------+-------------------------------------------------------------------+--------------------------------|
+** Pseudocode
+#+begin_src fundamental
+  START
+
+  READ Age, Height, Ride
+  IF (Ride != "Dragon Roller Coaster" && Ride != "Sky Swing" && Ride != Carousel")
+     || (Age < 0) || (Height < 0) THEN
+  	PRINT "Invalid Input"
+  ELSE
+  	IF (Ride == "Dragon Roller Coaster" && Height >= 48 && Age >= 10)
+  	   || (Ride == "Sky Swing" && Height >= 48)
+  	   || (Ride == "Carousel"  && Age >= 5) THEN
+          PRINT "You meet the criteria for The ", Ride
+  	ELSE
+  	    PRINT "You DO NOT meet the criteria for The ", Ride
+  	ENDIF
+  ENDIF
+
+  END
+#+end_src
+** Flowchart
+[[file:problem-6.svg]]
 * Problem 7: Which Floor...
 * Problem 8: Digit Sum
 * Problem 9: Exact Age in Days, Months, and Years from DOB
