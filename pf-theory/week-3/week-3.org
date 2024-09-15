@@ -263,9 +263,245 @@ height, age, and selected ride.
 ** Flowchart
 [[file:problem-6.svg]]
 * Problem 7: Which Floor...
+** Problem
+#+ATTR_ORG: :width 200px
+[[file:which-floor-ref.png]]
+There are 10 floors in a building 0 to 9. The building lift/elevator has a 1 digit, 7 segment LCD
+Panel display to tell which floor the lift is on, as shown. The input into the LCD Panel is a
+7-digit long number with only 1s and 0s. Each digit of the 7-digit long number tells which panel to
+light or not to light from A to G respectively, where 1 means to light the panel and 0 means to keep
+it off. E.g., 0110000 means only panel ‘B’ and ‘C’ are lit thus telling that this is the first
+floor. Similarly, the number 1111110 tells that all panels are lit except panel ‘G’ displaying the
+number 0. You need to design a program for a computer surveillance system to tell which floor the
+lift is on. The input for the program is the 7-digit number comprising only 1s and 0s. The output
+should be a single digit number 0 to 9 telling which floor the lift is on.  Hint: You can get the
+last digit by using %10 and the remaining digits by using number division /10. Also, you only need
+branching to do it.
+** IPO
+|---------------------------------+--------------------------------------------------------------------+---------------------------------------|
+| Input                           | Processing                                                         | Output                                |
+|---------------------------------+--------------------------------------------------------------------+---------------------------------------|
+| A 7-or-less-digit binary number | Read input                                                         | Floor shown by display through binary |
+|                                 |                                                                    |                                       |
+|                                 | IF input < 0 or input > 1111111                                    |                                       |
+|                                 | PRINT "Input must be a seven digit positive binary number!"        |                                       |
+|                                 | ... and EXIT                                                       |                                       |
+|                                 | Otherwise, continue...                                             |                                       |
+|                                 |                                                                    |                                       |
+|                                 | Create array of 7 elements named digits filled with zeroes         |                                       |
+|                                 | Set processed to input                                             |                                       |
+|                                 | Set current_digit to 0                                              |                                       |
+|                                 | Loop from i = 0 to 6 with step = 1                                 |                                       |
+|                                 | Set current_digit to remainder of dividing processed by 10          |                                       |
+|                                 | If current_digit > 1                                                |                                       |
+|                                 | Then Print "Digits other than 1 and 0 provided!"                   |                                       |
+|                                 | ... and Exit                                                       |                                       |
+|                                 | Otherwise, continue (still inside loop)...                         |                                       |
+|                                 | Set digits at index 6 - i to current_digit                          |                                       |
+|                                 | Set processed to processed / 10                                    |                                       |
+|                                 | Endloop                                                            |                                       |
+|                                 |                                                                    |                                       |
+|                                 | Create 2D array of mapping every floor to corresponding binary num |                                       |
+|                                 |                                                                    |                                       |
+|                                 | Set valid_floor to False                                            |                                       |
+|                                 | Set floor = -1                                                     |                                       |
+|                                 | Loop from i = 0 to 8 with step = 1                                 |                                       |
+|                                 | Set valid_floor to True                                             |                                       |
+|                                 | Set floor = i                                                      |                                       |
+|                                 | Loop (nested) from j = 0 to 6 with step = 1                        |                                       |
+|                                 | If digits at index j is not equal to floor_digits at index i,j      |                                       |
+|                                 | Then Set valid_floor to False                                       |                                       |
+|                                 | ... and Exit                                                       |                                       |
+|                                 | Otherwise, continue with next iteration of nested loop             |                                       |
+|                                 | Endloop (nested)                                                   |                                       |
+|                                 |                                                                    |                                       |
+|                                 | If valid_floor is True Then Break                                   |                                       |
+|                                 | Otherwise, continue with iteration of outside loop                 |                                       |
+|                                 |                                                                    |                                       |
+|                                 | If valid_floor is False Then PRINT "Invalid Floor!"                 |                                       |
+|                                 | Otherwise PRINT "Your floor is ", floor                            |                                       |
+|---------------------------------+--------------------------------------------------------------------+---------------------------------------|
+** Pseudocode
+#+begin_src fundamental
+  READ input
+  IF input < 0 || input > 1111111 THEN
+      PRINT "Input must be a seven digit positive binary number!"
+      EXIT
+  ENDIF
+
+  SET digits[7] TO {0, 0, 0, 0, 0, 0, 0};
+  SET processed TO input;
+  SET current_digit TO 0;
+  FOR i FROM 0 TO 6 STEP 1 DO
+      SET current_digit TO processed % 10;
+  	IF current_digit > 1 THEN
+  	    PRINT "Digits other than 1 and 0 provided!"
+  		EXIT
+  	ENDIF
+      SET digits[6 - i] TO current_digit;
+      SET processed TO processed / 10; // Truncates to an integer
+  ENDLOOP
+
+  SET floor_digits[9][7] TO {
+    {1, 1, 1, 1, 1, 1, 0}, // 0: ABCDEF-
+    {0, 1, 1, 0, 0, 0, 0}, // 1: -BC----
+    {1, 1, 0, 1, 1, 0, 1}, // 2: AB-DE-G
+    {1, 1, 1, 1, 0, 0, 1}, // 3: ABCD--G
+    {0, 1, 1, 0, 0, 1, 1}, // 4: -BC--FG
+    {1, 0, 1, 1, 0, 1, 1}, // 5: A-CD-FG
+    {1, 0, 1, 1, 1, 1, 1}, // 6: A-CDEFG
+    {1, 1, 1, 0, 0, 0, 0}, // 7: ABC----
+    {1, 1, 1, 1, 1, 1, 1}, // 8: ABCDEFG
+  };
+
+  SET valid_floor = False
+  SET floor = -1
+  FOR i FROM 0 TO 8 STEP 1 DO
+      valid_floor = True
+  	floor = i
+  	FOR j FROM 0 TO 6 STEP 1 DO
+  	    IF digits[j] != floor_digits[i][j] THEN
+  		    valid_floor = False
+  			BREAK
+  		ENDIF
+  	ENDLOOP
+  	IF valid_floor THEN
+  	    BREAK
+      ENDIF
+  ENDLOOP
+
+  IF NOT valid_floor THEN
+      PRINT "Invalid floor!"
+  ELSE
+      PRINT "Your floor is ", floor
+  ENDIF
+#+end_src
+** Flowchart
+[[file:problem-7.svg]]
+** C Code
+#+begin_src C
+  #include <stdio.h>
+  #include <stdbool.h>
+
+  int main()
+  {
+    printf("Enter your 7 digit floor number: ");
+    int floor = -1, length = 1, input;
+    scanf("%d", &input);
+    if (input < 0 || input > 1111111) {
+  	printf("Input must be a seven digit positive binary number!\n");
+  	return -1;
+    }
+    
+    int digits[7] = {0};
+    int processed = input;
+    int current_digit = 0;
+    for (int i = 0; i < 7; i++) {
+  	int current_digit = processed % 10;
+  	if (current_digit > 1) 	{
+  	  printf("Digits other than 1 and 0 provided!\n");
+  	  return -1;
+  	}
+  	digits[6 - i] = current_digit;
+  	processed /= 10;
+    }
+
+    int floor_digits[9][7] = {
+  	{1, 1, 1, 1, 1, 1, 0}, // 0: ABCDEF-
+  	{0, 1, 1, 0, 0, 0, 0}, // 1: -BC----
+  	{1, 1, 0, 1, 1, 0, 1}, // 2: AB-DE-G
+  	{1, 1, 1, 1, 0, 0, 1}, // 3: ABCD--G
+  	{0, 1, 1, 0, 0, 1, 1}, // 4: -BC--FG
+  	{1, 0, 1, 1, 0, 1, 1}, // 5: A-CD-FG
+  	{1, 0, 1, 1, 1, 1, 1}, // 6: A-CDEFG
+  	{1, 1, 1, 0, 0, 0, 0}, // 7: ABC----
+  	{1, 1, 1, 1, 1, 1, 1}, // 8: ABCDEFG
+    };
+
+    int valid_floor = false;
+    for (int i = 0; i < 9 && !valid_floor; i++) {
+  	valid_floor = true;
+  	floor = i;
+  	for (int j = 0; j < 7; j++) {
+  	  if (digits[j] != floor_digits[i][j]) {
+  		valid_floor = false;
+  		break;
+  	  }
+  	}
+    }
+
+    // Print digits array
+    printf("Digits: ");
+    for (int i = 0; i < 7; i++) {
+  	printf("%d, ", digits[i]);
+    }
+    
+    if (!valid_floor) {
+  	printf("\nInvalid floor!\n");
+  	return -1;
+    } else printf("\nFloor: %d\n", floor);
+    
+    return 0;
+  }
+#+end_src
+
 * Problem 8: Digit Sum
+** Problem
+** IPO
+|-------+------------+--------|
+| Input | Processing | Output |
+|-------+------------+--------|
+|       |            |        |
+|-------+------------+--------|
+** Pseudocode
+** Flowchart
 * Problem 9: Exact Age in Days, Months, and Years from DOB
+** Problem
+** IPO
+|-------+------------+--------|
+| Input | Processing | Output |
+|-------+------------+--------|
+|       |            |        |
+|-------+------------+--------|
+** Pseudocode
+** Flowchart
 * Problem 10: Poor Mr. Bhoola Bought a Faulty Keyboard
+** Problem
+** IPO
+|-------+------------+--------|
+| Input | Processing | Output |
+|-------+------------+--------|
+|       |            |        |
+|-------+------------+--------|
+** Pseudocode
+** Flowchart
 * Problem 11: No Not Optimus Prime it's Coprime...
+** Problem
+** IPO
+|-------+------------+--------|
+| Input | Processing | Output |
+|-------+------------+--------|
+|       |            |        |
+|-------+------------+--------|
+** Pseudocode
+** Flowchart
 * Problem 12: Die Hard 3: Defuse the Bomb... Quick!
+** Problem
+** IPO
+|-------+------------+--------|
+| Input | Processing | Output |
+|-------+------------+--------|
+|       |            |        |
+|-------+------------+--------|
+** Pseudocode
+** Flowchart
 * Problem 13: The General N-M Size Die Hard Jug Problem
+** Problem
+** IPO
+|-------+------------+--------|
+| Input | Processing | Output |
+|-------+------------+--------|
+|       |            |        |
+|-------+------------+--------|
+** Pseudocode
+** Flowchart
