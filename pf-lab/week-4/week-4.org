@@ -8,7 +8,23 @@ Write a C program to check whether a number is multiple of 3 or not. If it is th
 number is multiple of 3”, otherwise print “This number is not multiple of 3”.
 ** Solution
 #+begin_src C
-  
+  #include<stdio.h>
+
+  int main() {
+      printf("Enter a number: ");
+      int num;
+      scanf("%d", &num);
+      
+      switch(num%3) {
+      case 0: 
+          printf("This number is a multiple of 3.");
+          break;
+      default:
+          printf("This number is not multiple of 3.");
+      }
+      
+      return 0;
+  }
 #+end_src
 
 * Problem 2: Basic Calculator
@@ -16,11 +32,63 @@ number is multiple of 3”, otherwise print “This number is not multiple of 3�
 Create a calculator asking for operator (+ or – or * or /) and operands and performs calculation
 according to the user input using switch statement.
 ** Solution
+#+begin_src C
+  #include<stdio.h>
+
+  int main() {
+      printf("Enter an operator (+, -, * or /): ");
+      char op;
+      scanf("%c", &op);
+      printf("Enter first operand: ");
+      double a;
+      scanf("%lf", &a);
+      printf("Enter second operand: ");
+      double b;
+      scanf("%lf", &b);
+      
+      double result;
+      switch(op) {
+          case '+': result = a + b; break;
+          case '-': result = a - b; break;
+          case '*': result = a * b; break;
+          case '/': result = a / b; break;
+          default:
+              printf("Invalid operator!");
+              return -1;
+      }
+      
+      printf("%.3lf %c %.3lf = %.5lf.", a, op, b, result);
+      
+      return 0;
+  }
+#+end_src
+
 * Problem 3: Type of Character
 ** Problem
 Write a C program to input a character from the user and check whether the given character is a
 small alphabet, capital alphabet, digit, or special character, using if else.
 ** Solution
+#+begin_src C
+  #include <stdio.h>
+
+  int main() {
+      printf("Enter a character: ");
+      char character;
+      scanf("%c", &character);
+      
+      if(character >= 65 && character <= 90) {
+          printf("Uppercase character entered");
+      } else if (character >= 97 && character <= 122) {
+          printf("Lowercase character entered");
+      } else if (character >= 48 && character <= 57) {
+          printf("Digit entered");
+      } else {
+          printf("Special character entered");
+      }
+      return 0;
+  }
+#+end_src
+
 * Problem 4: Online Shopping Discounts
 ** Problem
 An online shopping store is providing discounts on the items due to the Eid. If the cost of items is
@@ -30,6 +98,38 @@ applied. If it&#39;s more than 6000 then a 35% discount will be applied to the c
 shopping. Print the actual amount, saved amount and the amount after discount. The Minimum amount
 eligible for a discount is 500.
 ** Solution
+#+begin_src C
+  #include <stdio.h>
+
+  int main() {
+      printf("Enter the cost of the item: ");
+      int cost;
+      scanf("%d", &cost);
+      
+      int discount;
+      if (cost < 500 && cost >= 0) {
+          discount = 0;
+      } else if(cost >= 500 && cost < 2000) {
+          discount = 5;
+      } else if (cost >= 2000 && cost < 4000) {
+          discount = 10;
+      } else if (cost >= 4000 && cost <= 6000) {
+          discount = 20;
+      } else if (cost > 6000) {
+          discount = 35;
+      } else {
+          printf("Invalid cost!");
+          return -1;
+      }
+      
+      int saved = (float)discount / 100 * cost;
+      int total = cost - saved;
+      printf("Original: %d\nDiscount: %d%%\nSaved: %d\nTotal: %d\n", cost, discount, saved, total);
+      
+      return 0;
+  }
+#+end_src
+
 * Problem 5: Electricity Bills
 ** Problem
 Write a program in C to calculate and print the Electricity bill of a given customer. The customer
@@ -44,7 +144,54 @@ amount to pay to the customer. The charges are as follow:
 | 500 and above                   | @35.90      |
 |---------------------------------+-------------|
 If the bill exceeds Rs. 18000 then a surcharge of 15% will be charged on top of the bill.
+*** Example
++ Test Input:
+  1001 //Customer ID
+  James //Customer Name
+  800 //Units Consumed
++ Expected Output:
+  Customer ID :1001
+  Customer Name: James
+  Units Consumed :800
+  Amount Charges @Rs. 35.90 per unit: 28720
+  Surcharge Amount: 4308
+  Net Amount Paid by the Customer: 33028.00
 ** Solution
+#+begin_src C
+  #include<stdio.h>
+
+  int main() {
+      int id = -1;
+      printf("Please enter customer ID: ");
+      scanf("%d", &id);
+      char name[40];
+      printf("Please enter customer's first name: ");
+      scanf("%s", name);
+      int consumed = -1;
+      printf("Please enter units consumed: ");
+      scanf("%d", &consumed);
+
+      if (consumed < 0 || id < 0) {
+          printf("Consumed units and ID cannot be negative!\n");
+          return -1;
+      }
+      
+      float unit_price = 35.90;
+      if (consumed < 200) unit_price = 16.20;
+      else if (consumed < 300) unit_price = 20.10;
+      else if (consumed < 500) unit_price = 27.10;
+
+      float bill = unit_price * (float)consumed;
+      if (bill > 18000) bill *= 1.15;
+
+      printf("Amount Charges With Unit Price @Rs. %.2f: %.2f\n", unit_price, bill / 1.15);
+      printf("Surcharge Amount: %.2f\n", bill - (bill / 1.15));
+      printf("Net Amount to be Paid by The Customer: %.2f\n", bill);
+      
+      return 0;
+  }
+#+end_src
+
 * Problem 6: Names of The Digits
 ** Problem
 Given a positive integer denoting n, do the following:
@@ -52,3 +199,36 @@ Given a positive integer denoting n, do the following:
 numbers e.g. (one for 1, two for 2)
 + If >9 print greater then 9
 ** Solution
+#+begin_src C
+  #include <stdio.h>
+
+  int main() {
+      int n;
+      scanf("%d", &n);
+
+      if (n <= 0) {
+          printf("Number must be greater than zero!\n");
+          return -1;
+      }
+
+      printf("Your number is ");
+      switch (n) {
+      case 1: { printf("one"); break; }
+      case 2: { printf("two"); break; }
+      case 3: { printf("three"); break; }
+      case 4: { printf("four"); break; }
+      case 5: { printf("five"); break; }
+      case 6: { printf("six"); break; }
+      case 7: { printf("seven"); break; }
+      case 8: { printf("eight"); break; }
+      case 9: { printf("nine"); break; }
+      default:
+          printf("greater than nine!");
+          break;
+      }
+      printf("\n");
+      
+      return 0;
+  }
+#+end_src
+
