@@ -735,24 +735,203 @@ year in the calculation.
 
 * Problem 10: Poor Mr. Bhoola Bought a Faulty Keyboard
 ** Problem
+Imagine Mr. Bhoola's keyboard is a bit mischievous! Every time he types the number "9," the keyboard
+adds an extra zero. So, if he types "9," it shows up as "90".  Your Mission: Mr. Bhoola wrote down
+some numbers using his silly keyboard. But we know they're wrong because of the extra zeroes. Your
+job is to fix them by taking away the extra zeroes whenever you see a "90" in the number.  Here are
+some examples: 100900: The keyboard typed "90" where there should be "9". So, it's really 10090.
+1540090: The keyboard added an extra zero again. It's really 154009.  1290905: This one is tricky!
+There's a "90" where there should be a "9". It's really 12995.  Design a solution to fix the other
+numbers Mr. Bhoola wrote down!
 ** IPO
-|-------+------------+--------|
-| Input | Processing | Output |
-|-------+------------+--------|
-|       |            |        |
-|-------+------------+--------|
+|---------------+-------------------------------------------------------------------------------+--------------------------------------------|
+| Input         | Processing                                                                    | Output                                     |
+|---------------+-------------------------------------------------------------------------------+--------------------------------------------|
+| Faulty number | Read input                                                                    | Corrected number with extra zeroes removed |
+|               | set processing to input                                                       |                                            |
+|               | set current_digit to -1                                                        |                                            |
+|               | set next_digit to -1                                                           |                                            |
+|               | set result to 0                                                               |                                            |
+|               | set i to 0                                                                    |                                            |
+|               | loop while processing > 0                                                     |                                            |
+|               | set current_digit to remainder of division of processing by 10                 |                                            |
+|               | check if current_digit is 0 then                                               |                                            |
+|               | ... set next_digit to remainder of division of (processing by 10) divied by 10 |                                            |
+|               | ... check if (nested) next_digit is 9 then                                     |                                            |
+|               | ... ... set processing to processing divided by 10                            |                                            |
+|               | ... ... Continue! (Skip the rest of this iteration in loop)                   |                                            |
+|               | set result to result + (10 to the power of i) multiplied by current_digit      |                                            |
+|               | set processing to processing divided by 10                                    |                                            |
+|               | set i to i + 1                                                                |                                            |
+|               | End of loop                                                                   |                                            |
+|               |                                                                               |                                            |
+|               | Print result                                                                  |                                            |
+|---------------+-------------------------------------------------------------------------------+--------------------------------------------|
 ** Pseudocode
+#+begin_src fundamental
+  START
+
+  READ input
+  SET processing = input, current_digit = -1, next_digit = -1, result = 0, i = 0
+  WHILE processing > 0 DO
+      current_digit = processing % 10
+      IF current_digit == 0 THEN
+  	    next_digit = (processing / 10) % 10
+  		IF next_digit == 9 THEN
+  		    processing = processing / 10
+  			CONTINUE
+  		ENDIF
+  	ENDIF
+  	result = result + ((10^i) * current_digit)
+  	processing = processing / 10
+  	i = i + 1
+  ENDLOOP
+
+  PRINT result
+
+  END
+#+end_src
+
 ** Flowchart
+[[file:problem-10.svg]]
+** C Code
+#+begin_src C
+  #include <stdio.h>
+  #include <math.h>
+
+  int main()
+  {
+    int input = 1290905;
+    scanf("%d", &input);
+
+    int processing = input, current_digit = -1, next_digit = -1, result = 0, i = 0;
+    while (processing > 0) {
+  	current_digit = processing % 10;
+  	if (current_digit == 0) {
+  	  next_digit = ((processing / 10) % 10);
+  	  if (next_digit == 9) {
+  		processing /= 10;
+  		continue;
+  	  }
+  	}
+  	result += pow(10, i) * current_digit;
+  	processing /= 10;
+  	i++;
+    }
+    
+    printf("%d -> %d", input, result);
+    
+    return 0;
+  }
+#+end_src
+
 * Problem 11: No Not Optimus Prime it's Coprime...
 ** Problem
+Mr. Bhoola just found out about coprime numbers. Now he is obsessed with them and keeps checking two
+numbers whether they are coprime or not. You are to design a solution to this problem and help
+Mr. Bhoola with checking whether any two whole numbers greater than 0 are coprime or not. A
+simplified definition of Coprime numbers is that their GCD is 1. You are encouraged to check wiki or
+other resources for more information. Examples: 8 and 9 are coprimes despite the fact that they are
+not prime numbers. 14 and 33 are coprimes.
 ** IPO
-|-------+------------+--------|
-| Input | Processing | Output |
-|-------+------------+--------|
-|       |            |        |
-|-------+------------+--------|
+|-------------------------------------+-------------------------------------------------------+-----------------------------------|
+| Input                               | Processing                                            | Output                            |
+|-------------------------------------+-------------------------------------------------------+-----------------------------------|
+| Two whole numbers greater than zero | Read a, b                                             | If the numbers are coprime or not |
+|                                     | Set tmp to a                                          |                                   |
+|                                     |                                                       |                                   |
+|                                     | If a is less than or equal to zero                    |                                   |
+|                                     | OR b is less than or equal to zero                    |                                   |
+|                                     | Then, Print "Both a and b must be greater than zero!" |                                   |
+|                                     | ... Exit                                              |                                   |
+|                                     | Otherwise, continue...                                |                                   |
+|                                     |                                                       |                                   |
+|                                     | If a is less than b                                   |                                   |
+|                                     | Then set tmp to a                                     |                                   |
+|                                     | ... set a to b                                        |                                   |
+|                                     | ... set b to tmp                                      |                                   |
+|                                     |                                                       |                                   |
+|                                     | Loop while remainder of a divided by b is not zero    |                                   |
+|                                     | set tmp to a                                          |                                   |
+|                                     | set a to b                                            |                                   |
+|                                     | set b to tmp                                          |                                   |
+|                                     | set b to the remainder of b divided by a              |                                   |
+|                                     | End loop                                              |                                   |
+|                                     |                                                       |                                   |
+|                                     | If b is one                                           |                                   |
+|                                     | then Print "The numbers are coprime!"                 |                                   |
+|                                     | Otherwise, Print "The numbers are NOT coprime..."     |                                   |
+|-------------------------------------+-------------------------------------------------------+-----------------------------------|
 ** Pseudocode
+#+begin_src fundamental
+  START
+
+  READ a, b
+  SET tmp = a
+
+  IF a <= 0 || b <= 0 THEN
+      PRINT "Both a and b must be greater than zero!"
+      EXIT
+  ENDIF
+
+  IF a < b THEN
+      tmp = a
+  	a = b
+  	b = tmp
+  ENDIF
+
+  WHILE a % b != 0 DO
+      tmp = a
+  	a = b
+  	b = tmp
+  	b = b % a
+  ENDLOOP
+
+  IF b == 1 THEN
+      PRINT "The numbers are coprime!"
+  ELSE
+      PRINT "The numbers are NOT coprime..."
+  ENDIF
+
+  END
+#+end_src
+
 ** Flowchart
+[[file:problem-11.svg]]
+** C Code
+#+begin_src C
+  #include <stdio.h>
+
+  int main()
+  {
+    int a = 14, b = 33, tmp = a;
+    scanf("%d", &a);
+    scanf("%d", &b);
+
+    if (a <= 0 || b <= 0) {
+  	printf("Both a and b must be greater than zero!");
+  	return -1;
+    }
+    
+    if (a < b) {
+  	tmp = a;
+  	a = b;
+  	b = tmp;
+    }
+
+    while (a % b != 0) {
+  	tmp = a;
+  	a = b;
+  	b = tmp;
+  	b %= a;
+    }
+
+    printf("GCD is %d, coprime? %c", b, b == 1 ? 'Y' : 'N');
+    
+    return 0;
+  }
+#+end_src
+
 * Problem 12: Die Hard 3: Defuse the Bomb... Quick!
 ** Problem
 ** IPO
