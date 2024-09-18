@@ -1,0 +1,54 @@
+#+Title: Programming Fundamentals Lab Week 4
+#+Author: Hamza Shahid
+#+Date: <2024-09-18 Wed>
+
+* Problem 1: Multiples of Three
+** Problem
+Write a C program to check whether a number is multiple of 3 or not. If it is then print “This
+number is multiple of 3”, otherwise print “This number is not multiple of 3”.
+** Solution
+#+begin_src C
+  
+#+end_src
+
+* Problem 2: Basic Calculator
+** Problem
+Create a calculator asking for operator (+ or – or * or /) and operands and performs calculation
+according to the user input using switch statement.
+** Solution
+* Problem 3: Type of Character
+** Problem
+Write a C program to input a character from the user and check whether the given character is a
+small alphabet, capital alphabet, digit, or special character, using if else.
+** Solution
+* Problem 4: Online Shopping Discounts
+** Problem
+An online shopping store is providing discounts on the items due to the Eid. If the cost of items is
+less than 2000 it will give a discount up to 5%. If the cost of shopping is 2000 to 4000, a 10%
+discount will be applied. If the cost of shopping is 4000 to 6000, a 20% discount will be
+applied. If it&#39;s more than 6000 then a 35% discount will be applied to the cost of
+shopping. Print the actual amount, saved amount and the amount after discount. The Minimum amount
+eligible for a discount is 500.
+** Solution
+* Problem 5: Electricity Bills
+** Problem
+Write a program in C to calculate and print the Electricity bill of a given customer. The customer
+id., name and unit consumed by the user should be taken from the keyboard and display the total
+amount to pay to the customer. The charges are as follow:
+|---------------------------------+-------------|
+| Unit                            | Charge/Unit |
+|---------------------------------+-------------|
+| Up to 199                       | @16.20      |
+| 200 and above but less than 300 | @20.10      |
+| 300 and above but less than 500 | @27.10      |
+| 500 and above                   | @35.90      |
+|---------------------------------+-------------|
+If the bill exceeds Rs. 18000 then a surcharge of 15% will be charged on top of the bill.
+** Solution
+* Problem 6: Names of The Digits
+** Problem
+Given a positive integer denoting n, do the following:
++ If 1<=n<=9, print lowercase English words corresponding to the
+numbers e.g. (one for 1, two for 2)
++ If >9 print greater then 9
+** Solution
