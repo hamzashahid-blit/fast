@@ -934,16 +934,132 @@ not prime numbers. 14 and 33 are coprimes.
 
 * Problem 12: Die Hard 3: Defuse the Bomb... Quick!
 ** Problem
+You've got to defuse a bomb by placing exactly 4 liters of water on a sensor. And you have to be
+quick! The problem is, you only have a 5L jug and a 3L jug on hand! See the video clip here:
+https://youtu.be/BVtQNK_ZUJg You have an unlimited water source, and if needed you can also empty
+the water in the jugs to get rid of it. How could 4 liters be measured?
 ** IPO
-|-------+------------+--------|
-| Input | Processing | Output |
-|-------+------------+--------|
-|       |            |        |
-|-------+------------+--------|
+|------------------------+--------------------------------------------+----------|
+| Input                  | Processing                                 | Output   |
+|------------------------+--------------------------------------------+----------|
+| 5L Jug                 | Set threeJug To 0                          | 4L Water |
+| 3L Jug                 | Set waterSupply To ∞                      |          |
+| Unlimited water supply |                                            |          |
+|                        | // Fill 5L Jug                             |          |
+|                        | fiveJug = fiveJug + 5                      |          |
+|                        | waterSupply = waterSupply - fiveJug        |          |
+|                        |                                            |          |
+|                        | // Pour 5L Jug into 3L Jug                 |          |
+|                        | threeJug = threeJug + 3                    |          |
+|                        | fiveJug = fiveJug - 3                      |          |
+|                        |                                            |          |
+|                        | // Empty 3L Jug                            |          |
+|                        | waterSupply = waterSupply + threeJug       |          |
+|                        | threeJug = threeJug - threeJug             |          |
+|                        |                                            |          |
+|                        | // Pour remaining 2L in 5L Jug into 3L Jug |          |
+|                        | threeJug = threeJug + fiveJug              |          |
+|                        | fiveJug = fiveJug - fiveJug                |          |
+|                        |                                            |          |
+|                        | // Refill 5L Jug                           |          |
+|                        | fiveJug = fiveJug + 5                      |          |
+|                        | waterSupply = waterSupply - fiveJug        |          |
+|                        |                                            |          |
+|                        | // Fill 3L Jug using 5L Jug                |          |
+|                        | Set leftToFill = 3 - threeJug              |          |
+|                        | threeJug = threeJug + leftToFill           |          |
+|                        | fiveJug = fiveJug - leftToFill             |          |
+|                        |                                            |          |
+|                        | // 5L Jug has exactly 4L!                  |          |
+|                        | PRINT threeJug, fiveJug                    |          |
+|------------------------+--------------------------------------------+----------|
+
 ** Pseudocode
+#+begin_src fundamental
+  SET fiveJug = 0
+  SET threeJug = 0
+  SET waterSupply = ∞
+
+  // Fill 5L Jug
+  fiveJug = fiveJug + 5
+  waterSupply = waterSupply - fiveJug
+
+  // Pour 5L Jug into 3L Jug
+  threeJug = threeJug + 3
+  fiveJug = fiveJug - 3
+
+  // Empty 3L Jug
+  waterSupply = waterSupply + threeJug
+  threeJug = threeJug - threeJug
+
+  // Pour remaining 2L in 5L Jug into 3L Jug
+  threeJug = threeJug + fiveJug
+  fiveJug = fiveJug - fiveJug
+
+  // Refill 5L Jug
+  fiveJug = fiveJug + 5
+  waterSupply = waterSupply - fiveJug
+
+  // Fill 3L Jug using 5L Jug
+  SET leftToFill = 3 - threeJug
+  threeJug = threeJug + leftToFill
+  fiveJug = fiveJug - leftToFill
+
+  // 5L Jug has exactly 4L!
+  PRINT "3L Jug = ", threeJug, ", 5L Jug = ", fiveJug
+#+end_src
+
 ** Flowchart
+[[file:problem-12.svg]]
+** C Code
+#+begin_src C
+  #include <stdio.h>
+
+  int main()
+  {
+    int fiveJug = 0, threeJug = 0, waterSupply = 999999;
+
+    // Fill 5L Jug
+    fiveJug += 5;
+    waterSupply -= fiveJug;
+
+    // Pour 5L Jug into 3L Jug
+    threeJug += 3;
+    fiveJug -= 3;
+
+    // Empty 3L Jug
+    waterSupply += threeJug;
+    threeJug -= threeJug;
+
+    // Pour remaining 2L in 5L Jug into 3L Jug
+    threeJug += fiveJug;
+    fiveJug -= fiveJug;
+
+    // Refill 5L Jug
+    fiveJug += 5;
+    waterSupply -= fiveJug;
+
+    // Fill 3L Jug using 5L Jug
+    int leftToFill = 3 - threeJug;
+    threeJug += leftToFill;
+    fiveJug -= leftToFill;
+
+    // 5L Jug has exactly 4L!
+    printf("3L Jug = %d, 5L Jug = %d", threeJug, fiveJug);
+
+    return 0;
+  }
+
+#+end_src
+
 * Problem 13: The General N-M Size Die Hard Jug Problem
 ** Problem
+Design a solution to solve the general form M-NL jugs of the above problem. So instead of having
+just 3-5L jugs you can be given 3-9L jugs or 7-9L jugs. Can you extract any number of liters of
+water less than the larger jug or only some quantities. Is there a formula for this? What amounts of
+water can be extracted from M-NL jugs?
+** General Answer
+
 ** IPO
 |-------+------------+--------|
 | Input | Processing | Output |
