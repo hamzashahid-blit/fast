@@ -1059,12 +1059,171 @@ just 3-5L jugs you can be given 3-9L jugs or 7-9L jugs. Can you extract any numb
 water less than the larger jug or only some quantities. Is there a formula for this? What amounts of
 water can be extracted from M-NL jugs?
 ** General Answer
-
+Only possible values are multiples of the GCD (Greatest Common Divisor) of N and M
 ** IPO
-|-------+------------+--------|
-| Input | Processing | Output |
-|-------+------------+--------|
-|       |            |        |
-|-------+------------+--------|
+|------------------------+------------------------------------------------------------------------------------------------+-------------------------+---------------------------------------|
+| Input                  | Processing                                                                                     | Module Ref              | Output                                |
+|------------------------+------------------------------------------------------------------------------------------------+-------------------------+---------------------------------------|
+| Size of Jug N          | READ nCap, mCap, desired                                                                       | HCF/GCD from Problem 11 | Final state of both jugs as an        |
+| Size of Jug M          | SET n = nCap, m = mCap                                                                         |                         | attempt to reach the desired quantity |
+| Infinite water supply  |                                                                                                |                         |                                       |
+| Desired precise liquid | IF n <= 0 or m <= 0 then                                                                       |                         |                                       |
+|                        | PRINT "Both N and M must be greater than zero!"                                                |                         |                                       |
+|                        | EXIT                                                                                           |                         |                                       |
+|                        | ENDIF                                                                                          |                         |                                       |
+|                        |                                                                                                |                         |                                       |
+|                        | // Make sure N is largest (swap otherwise)                                                     |                         |                                       |
+|                        | IF m > n THEN                                                                                  |                         |                                       |
+|                        | SET tmp = m                                                                                    |                         |                                       |
+|                        | SET m = n                                                                                      |                         |                                       |
+|                        | SET n = tmp                                                                                    |                         |                                       |
+|                        | ENDIF                                                                                          |                         |                                       |
+|                        |                                                                                                |                         |                                       |
+|                        | SET gcd = CALL hcf(n, m) // HCF/GCD module defined in problem 11                               |                         |                                       |
+|                        | IF desired % gcd != 0 or  desired > n THEN                                                     |                         |                                       |
+|                        | PRINT "Obtaining ", desired, " liters from a ", nCap, "L and a ", mCap, "L jug is impossible!" |                         |                                       |
+|                        | EXIT                                                                                           |                         |                                       |
+|                        | ENDIF                                                                                          |                         |                                       |
+|                        |                                                                                                |                         |                                       |
+|                        | WHILE n != desired && m != desired DO                                                          |                         |                                       |
+|                        | // Max pourable is the min(M, The amount required to fill N)                                   |                         |                                       |
+|                        | IF m < nCap - n THEN                                                                           |                         |                                       |
+|                        | SET maxPourable = m                                                                            |                         |                                       |
+|                        | ELSE                                                                                           |                         |                                       |
+|                        | SET maxPourable = nCap - n                                                                     |                         |                                       |
+|                        | ENDIF                                                                                          |                         |                                       |
+|                        |                                                                                                |                         |                                       |
+|                        | // Pour maxPourable liters from M to N.                                                        |                         |                                       |
+|                        | SET n = n + maxPourable                                                                        |                         |                                       |
+|                        | SET m = m - maxPourable                                                                        |                         |                                       |
+|                        |                                                                                                |                         |                                       |
+|                        | IF m == 0 THEN                                                                                 |                         |                                       |
+|                        | m = m + mCap // If M jug is empty, fill it                                                     |                         |                                       |
+|                        | ENDIF                                                                                          |                         |                                       |
+|                        | IF n == nCap THEN                                                                              |                         |                                       |
+|                        | n = n - nCap // If N jug is full, empty it                                                     |                         |                                       |
+|                        | ENDIF                                                                                          |                         |                                       |
+|                        | ENDLOOP                                                                                        |                         |                                       |
+|                        |                                                                                                |                         |                                       |
+|                        | PRINT nCap, "L Jug = ", n, " & ", mCap, "L Jug = ", m                                          |                         |                                       |
+|------------------------+------------------------------------------------------------------------------------------------+-------------------------+---------------------------------------|
 ** Pseudocode
+#+begin_src fundamental
+  START
+
+  // Cap means Capacity
+  READ nCap, mCap, desired
+  SET n = nCap, m = mCap
+
+  IF n <= 0 || m <= 0 THEN
+      PRINT "Both N and M must be greater than zero!"
+  	EXIT
+  ENDIF
+
+  // Make sure N is largest (swap otherwise)
+  IF m > n THEN
+      SET tmp = m
+  	SET m = n
+  	SET n = tmp
+  ENDIF
+
+  SET gcd = CALL hcf(n, m) // HCF/GCD module defined in problem 11
+  IF desired % gcd != 0 || desired > n THEN
+      PRINT "Obtaining ", desired, " liters from a ", nCap, "L and a ", mCap, "L jug is impossible!"
+  	EXIT
+  ENDIF
+
+  WHILE n != desired && m != desired DO
+  	// Max pourable is the min(M, The amount required to fill N)
+  	IF m < nCap - n THEN
+  	    SET maxPourable = m
+  	ELSE
+  	    SET maxPourable = nCap - n
+  	ENDIF
+
+  	// Pour maxPourable liters from M to N.
+      SET n = n + maxPourable
+  	SET m = m - maxPourable
+
+      IF m == 0 THEN
+  	    m = m + mCap // If M jug is empty, fill it
+  	ENDIF
+  	IF n == nCap THEN
+  	    n = n - nCap // If N jug is full, empty it
+  	ENDIF
+  ENDLOOP
+
+  PRINT nCap, "L Jug = ", n, " & ", mCap, "L Jug = ", m
+
+  END
+#+end_src
+
 ** Flowchart
+[[file:problem-13.svg]]
+** C Code
+#+begin_src C
+  #include <stdio.h>
+
+  int hcf(int a, int b) {
+    if (a <= 0 || b <= 0) {
+  	printf("Both N and M must be greater than zero!");
+  	return -1;
+    }
+
+    int tmp = a;
+    if (a < b) {
+  	tmp = a;
+  	a = b;
+  	b = tmp;
+    }
+
+    while (a % b != 0) {
+  	tmp = a;
+  	a = b;
+  	b = tmp;
+  	b %= a;
+    }
+    
+    return b;
+  }
+
+  int main()
+  {
+    const int nCap = 3, mCap = 5;
+    int n = nCap, m = mCap, desired = 4;
+    if(n <= 0 || m <= 0) {
+  	printf("Both N and M must be greater than zero!");
+  	return -1;
+    }
+    
+    // Make sure N is largest (swap otherwise)
+    if (m > n) {
+  	int tmp = m;
+  	m = n;
+  	n = tmp;
+    }
+
+    int gcd = hcf(n, m);
+    if (desired % gcd != 0 || desired > n) {
+  	printf("Obtaining %d liters from a %dL and a %dL jug is impossible!", desired, nCap, mCap);
+  	return -1;
+    }
+
+    while (n != desired && m != desired) {
+  	// Max pourable is the min(M, The amount required to fill N)
+  	int maxPourable = m < nCap - n ? m : nCap - n;
+  	
+  	// Pour maxPourable liters from M to N.
+  	n += maxPourable;
+  	m -= maxPourable;
+
+  	if (m == 0) m += mCap; 	// If M jug is empty, fill it
+  	if (n == nCap) n -= n; 	// If N jug is full, empty it
+    }
+    
+    printf("%dL Jug = %d, %dL Jug = %d\n", nCap, n, mCap, m);
+  	
+    return 0;
+  }
+
+#+end_src
