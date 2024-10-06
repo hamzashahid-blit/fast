@@ -1,0 +1,122 @@
+#+Title: Programming Fundamentals Lab Week 6
+#+Author: Hamza Shahid
+#+Date: <2024-10-06 Sun>
+
+* Best Input Loop System
+** Problem
+Which loop system would be better for user input. Justify your answer by creating a program that
+takes a value and adds it to a variable and prints it repeatedly until the user enters a zero value.
+** Solution
+The ~while~ or ~do ... while~ loop would be the best fit for taking user input, especially when implementing validation.
+#+begin_src C
+  #include<stdio.h>
+
+  int main() {
+      int total = 0, num = 0;
+      do {
+          printf("Enter a number: ");
+          scanf("%d", &num);
+          total += num;
+          printf("\tRunnning total: %d\n", total);
+      } while (num != 0);
+
+      printf("\nTotal: %d\n", total);
+
+      return 0;
+  }
+#+end_src
+
+* Is Multiple Digit?
+#+begin_src C
+  #include<stdio.h>
+
+  int main() {
+      printf("Enter a number: ");
+      int num = 0;
+      scanf("%d", &num);
+      if(num < -9 || num > 9) {
+          printf("Your number has multiple digits.\n");
+      } else {
+          printf("Your number only has a single digit.\n");
+      }
+      
+      return 0;
+  }
+#+end_src
+
+* Fibonacci Sequence
+#+begin_src C
+  #include<stdio.h>
+
+  int main() {
+      int num;
+      printf("How many numbers from the fibonacci sequence do you want to print? ");
+      scanf("%d", &num);
+
+      int a = 1, b = 2;
+      for (int i = 0; i < num; i++) {
+          if (i != 0) printf(", ");
+          if (num - i == 1) {
+              printf("%d", a);
+          } else {
+              printf("%d, %d", a, b);
+              i++;
+              a += b;
+              b += a;
+          } 
+      }
+
+      return 0;
+  }
+#+end_src
+
+* Progressive Division Series
+#+begin_src C
+  #include<stdio.h>
+
+  int main() {
+      printf("Which power of 2 to start from (16 -> 65,536)? ");
+      int power = 0;
+      scanf("%d", &power);
+
+      int num = 1;
+      for (int i = 0; i < power; i++) {
+          num *= 2;
+      }
+
+      int result = num;
+      for (int i = 1; result > 0; i++) {
+          result /= i;
+          if (result != 0) printf("%d, ", result);
+          else printf("%d\n", result);
+      }
+
+      return 0;
+  }
+#+end_src
+
+* Fibonacci but with Multiplication
+#+begin_src C
+  #include<stdio.h>
+
+  int main() {
+      long long int num;
+      printf("How many numbers of the sequence do you want to print? ");
+      scanf("%lli", &num);
+
+      long long int a = 1, b = 2;
+      for (int i = 0; i < num; i++) {
+          if (i != 0) printf(", ");
+          if (num - i == 1) {
+              printf("%lli", a);
+          } else {
+              printf("%lli, %lli", a, b);
+              i++;
+              a *= b;
+              b *= a;
+          } 
+      }
+
+      return 0;
+  }
+#+end_src
