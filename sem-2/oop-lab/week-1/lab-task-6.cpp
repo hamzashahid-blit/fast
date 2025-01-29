@@ -1,8 +1,6 @@
 #include <iostream>
 #include <iomanip>
-#include <iterator>
 #include <sstream>
-#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -36,6 +34,6 @@ int main() {
 
     std::cout << "Student Name: " << name << '\n';
     std::cout << "Test scores: ";
-    for (float score : scores) { std::cout << score << ' '; }
+    for (float score : scores) { std::cout << std::fixed << std::setprecision(2) << score << ' '; }
     std::cout << '\n'; 
 }
