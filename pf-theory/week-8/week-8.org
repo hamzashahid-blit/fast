@@ -1,0 +1,14 @@
+#+Title: Programming Fundamentals Theory Week 8 (Assignment 2)
+#+Author: Hamza Shahid
+#+Date: <2024-10-31 Thu>
+
+* Second Smallest
+* Letter Frequency
+** Example Output
+[[file:2024-11-01_16-09-35_screenshot.png]]
+
+* Compressing Strings
+** Example Output
+[[file:2024-11-01_17-10-13_screenshot.png]]
+
+* 
