@@ -8,7 +8,7 @@ public:
 };
 
 int main() {
-    User user = User(24, "TeoJoeNigga what the hell");
+    User user = User(24, "Teo");
     std::cout << "My name is " << user.name << " and I'm " << user.age << " years old.\n";
 
     return 0;
