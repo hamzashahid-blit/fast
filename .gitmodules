@@ -1,0 +1,3 @@
+[submodule "sem-2/oop-lab/project/blood-bound/imgui"]
+	path = sem-2/oop-lab/project/blood-bound/imgui
+	url = https://github.com/ocornut/imgui

@@ -1,5 +1,3 @@
 CompileFlags:
     Add:
-        - "-std=c++2a"
-        - "-I../include"
-        - "-lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl"
+        - "-std=c++2a ../src/*.cpp ../imgui/*.cpp ../imgui/backends/imgui_impl_glfw.cpp ../src/glad.c -I../include -I../include/imgui -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl -lm"
